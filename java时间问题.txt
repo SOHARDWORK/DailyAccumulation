@@ -1,0 +1,32 @@
+旧的日期存在的问题
+    1.Date和Calendar 不是线程安全的，需要额外代码处理线程安全问题
+    2.需要额外代码处理时区问题
+新的日期API
+    ZoneId:
+    Instant:
+    LocalDate:
+    LocalTime:
+    LocalDateTime:
+    Clock:
+    Duration:
+    LocalDate:
+    获取当前日期：
+    LocalDate localDate=LocalDate.now();
+    指定日期：
+    LocalDate.of(2017,07,20);
+    LocalDate.parse("201-07-20")
+    为当前时间加N天
+     LocalDate tomorrow=LocalDate.now.plusDays(1);
+     一周后
+     now.plusWeeks(1)
+     两天前 
+     now.minusDays(2)
+     增加一个月不会出现2017-02-31 而是会返回该月的最后一个有效日期，即2017-02-28
+     LocalDate.of(2017, 1, 31).plusMonths(1)
+     isBefore,isAfter,isLeapYear
+     本地时间，表示一天中的某个时间
+     LocalTime()
+     本地日期时间
+     LocalDateTime()
+     常用格式化当前时间
+     DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.of(2001,1,1))
