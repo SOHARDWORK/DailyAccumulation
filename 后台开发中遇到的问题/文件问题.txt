@@ -1,0 +1,2 @@
+文件上传：上传文件，没有文件后缀。file.getContentType()获取文件后缀，File dest =new File(filePath,fileName), file.transferTo(dest);
+文件下载：FileInputStream（数据源）,BufferedInputStream（缓冲区）。BufferedInputStream减少IO操作，磁盘-》缓冲区（内存）-》读取数据

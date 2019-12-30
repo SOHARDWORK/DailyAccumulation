@@ -1,0 +1,102 @@
+因此，多人协作的工作模式通常是这样：
+
+	1.首先，可以试图用git push origin <branch-name>推送自己的修改；
+
+	2.如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+	3.如果合并有冲突，则解决冲突，并在本地提交；
+
+	4.没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+
+	如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+
+	这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+	
+	多人在同一个分支上协作时，很容易出现冲突。即使没有冲突，后push的不得不先pull，在本地合并，然后才能push成功。导致的问题就是每次pull的话都要merge，
+	
+	git的提交历史不是一条干净的直线。所有就有了“变基”rebase。
+
+	git pull=>git fetch ,git merge
+
+	git pull --rebase ===>变基合并，解决冲突，1.git add .  2.git rebase --continue
+
+本地分支和远程分支关联起来的方式：
+	
+	1.git clone 从远程克隆到本地自动关联
+
+	2.如果git pull提示no tracking information，
+
+	  则说明本地分支和远程分支的链接关系没有创建，
+
+	  用命令git branch --set-upstream-to <remote-branchName> origin/<local-branchName>。
+
+Head--->
+	master----->指向提交
+
+	dev----->指向提交
+
+	所以切换分支速度很快
+
+	合并分支只是将master--->指向新的提交
+
+分支
+	创建并切换分支，合并分支 
+
+		1.git checkout -b newBranch :创建并切换分支
+
+		2.git checkout newBranch:切换分支
+
+		3.git branch newBranch:创建分支
+
+		4.git merge newBranch:切换到主分支后使用merge newBranch合并分支
+
+		快速合并是在原有文件基础上修改后，原有文件并没有发生改变，不会发生合并冲突
+
+		非快速合并是在多人协作过程中同时对一个文件做了修改，可能发生冲突
+
+	删除分支
+
+		1.git branch -d newBranch:删除分支
+
+		2.git branch -D newBranch:强制删除分支
+
+	分支管理策略
+
+		1.fast-forward删除分支后会丢失分支信息
+
+		2.禁止使用fast-forward,Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+
+		  git merge --no-ff -m,-m是为了写commit注释信息
+
+git status 查看状态，冲突，修改，删除，添加
+
+git stash pop和git stash apply
+	
+	git stash pop 拿出缓存删除stash记录
+
+	git stash apply 拿出缓存还有stash记录
+	
+	git stash 使用场景，一般在分支开发切换分支时，既不好commit没有意义的提交，也不能直接切换分支，所以就需要git stash 将所做的存起来。当其他分支做完后，切换回来，stash pop或者 stash apply
+	
+	git stash list 能查看多次stash的东西
+	
+	例子：git stash pop stash@{0},git stash apply stash@{0}
+
+git add test/test1.txt     根据git bash窗口所在目录添加单个文件。要求：1.第一级目录不用斜杠2.文件带上后缀
+
+git add file1 file2 file3   添加多个文件
+
+git add 文件夹名            添加文件夹
+
+
+
+
+
+
+
+
+	
+
+
+
+

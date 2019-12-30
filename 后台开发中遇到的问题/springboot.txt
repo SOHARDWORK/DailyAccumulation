@@ -1,0 +1,7 @@
+1.配置文件
+	在yml中获取值=》@Value("${aa.bb.cc}")直接赋值给类静态变量是不能成功的，需要使用spring的set方法例如
+
+               @Value("${clickhouse.address}")
+               public  void setClickhouseAddress(String address) {
+                      ClickHouseUtil.clickhouseAddress = address;
+               }
